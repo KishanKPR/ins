@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+// Function to compute (a^b) % P
+int power(int a, int b, int P) {
+    int result = 1, i;
+    for (i = 0; i < b; i++) {
+        result = (result * a) % P;
+    }
+    return result;
+}
+
+int main() {
+    int P = 23; // Prime number
+    int G = 9;  // Primitive root modulo P
+    int a = 4;  // Private key for Alice
+    int b = 3;  // Private key for Bob
+
+    printf("The value of P: %d\n", P);
+    printf("The value of G: %d\n", G);
+    printf("Private key for Alice: %d\n", a);
+    printf("Private key for Bob: %d\n", b);
+
+    int x = power(G, a, P); // Alice's public key
+    int y = power(G, b, P); // Bob's public key
+
+    int ka = power(y, a, P); // Secret key for Alice
+    int kb = power(x, b, P); // Secret key for Bob
+
+    printf("Secret key for Alice: %d\n", ka);
+    printf("Secret key for Bob: %d\n", kb);
+
+    return 0;
+}
