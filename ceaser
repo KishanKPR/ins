@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+void main()
+{
+   char pt[50],ct[50],dt[50];
+   int i ,len,key;
+   printf("Enter the msg :");
+   scanf("%s",pt);
+   len = strlen(pt);
+   printf("Enter he key :");
+   scanf("%d",&key);
+   if(key>26)
+   {
+      printf("Enter the valide key :");
+   }
+   for(i=0;i<len;i++)
+   {
+      ct[i]=pt[i]+key;
+      if(ct[i]>122)
+      {
+         ct[i]=ct[i]-26;
+      }
+   }
+   ct[i]='\0';
+   printf("Encrypted msg is : %s\n",ct);
+
+   for(i=0;i<len;i++)
+   {
+      dt[i]=ct[i]-key;
+      if(dt[i]<92)
+      {
+         dt[i]=dt[i]+26;
+      }
+   }
+   dt[i]='\0';
+   printf("Decrypted msg is :%s",dt);
+getch();
+
+}
